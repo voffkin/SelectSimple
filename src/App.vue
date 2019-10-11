@@ -1,26 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SelectSimple :list=list @input="onClickChild" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SelectSimple from './components/SelectSimple.vue'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      list: [
+        { num: 1, name: 'one' },
+        { num: 2, name: 'two' },
+        { num: 3, name: 'three' }
+      ]
+    }
+  },
   components: {
-    HelloWorld
+    SelectSimple
+  },
+  methods: {
+    onClickChild(val) {
+      console.log('onClickChild', val.num)
+    }
   }
 }
 </script>
 <style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+
 </style>
